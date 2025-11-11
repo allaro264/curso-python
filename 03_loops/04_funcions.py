@@ -4,6 +4,8 @@
 ##
 
 #*** Definicion de funcion
+from os import system
+if system("clear") != 0: system("cls")
 
 # def nombre_de_la_funcion(parametro1, parametro2 ...):
 #     #docstring
