@@ -15,12 +15,12 @@ goal = 8
 def find_first_sum(nums, goal):
     seen = {}
 
-    for index, value in enumerate(nums):
+    for i, value in enumerate(nums):
         missing = goal - value
-        if missing in seen: return [seen[missing], index]
-        seen[value] = index
-        
-        return None
-    
-    result = find_first_sum(nums, goal)
-    print(result)
+        if missing in seen: return [seen[missing], i]
+        seen[value] = i
+
+    return None
+
+result = find_first_sum(nums, goal)
+print(result)
