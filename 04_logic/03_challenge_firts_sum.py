@@ -13,7 +13,7 @@ system("cls")
 nums = [4, 5, 6, 2]
 goal = 8
 def find_first_sum(nums, goal):
-    seen = {}
+    seen = {} #dicionario para guardar el numero y su indice
 
     for i, value in enumerate(nums):
         missing = goal - value
