@@ -1,5 +1,4 @@
-from os import system
-if system("clear") != 0: system("cls")
+
 ##
 # 01 - Expresines regulares
 #
@@ -20,61 +19,64 @@ if system("clear") != 0: system("cls")
 #1. primer paso importar el modulo de expresionres regulares "re"
 import re
 # 2. crear un patrón, que es una cadena de texto que describe lo que queremos encontrar
-pattern = "Hola"
-# 3. El texto donde  queremos buscar
-text = "Hola mundo"
-#4. Usar la funcion de búsqueda de "re" 
-result = re.search(pattern, text)
+# pattern = "Hola"
+# # 3. El texto donde  queremos buscar
+# text = "Hola mundo"
+# #4. Usar la funcion de búsqueda de "re" 
+# result = re.search(pattern, text)
 
-if result:
-    print("He encontrado el patrón en el texto")
-else:
-    print("No he encontrado el patrón en el texto")
+# if result:
+#     print("He encontrado el patrón en el texto")
+# else:
+#     print("No he encontrado el patrón en el texto")
 
-# .group() devulve la cadena que coincide con el pattern
-result.group()
+# # .group() devulve la cadena que coincide con el pattern
+# result.group()
 
-# .start() devolver la posicion inicial de la councidencia
-print(result.start())
+# # .start() devolver la posicion inicial de la councidencia
+# print(result.start())
 
-# .end devolver la posicion finalde la coincidencia
-print(result.end())
+# # .end devolver la posicion finalde la coincidencia
+# print(result.end())
 
-#Ejercicio 01
-# Encontrar la primera ocurrencia de la palabra "IA" en el siguiente texto
-# e indica en que posicion empieza la conincidencia.
-text = "Todo el mundo dice que la IA nos va a quitar el trabajo. Pero solo hace falta ver cómo la puede cagar con la Regex para ir con cuidado"
-pattern = "IA"
-found_ia = re.search(pattern, text)
+# #Ejercicio 01
+# # Encontrar la primera ocurrencia de la palabra "IA" en el siguiente texto
+# # e indica en que posicion empieza la conincidencia.
+# text = "Todo el mundo dice que la IA nos va a quitar el trabajo. Pero solo hace falta ver cómo la puede cagar con la Regex para ir con cuidado"
+# pattern = "IA"
+# found_ia = re.search(pattern, text)
 
-if found_ia:
-    print(f"He encontrado el patrón en el texto en la posicion {found_ia.start()} y termina en la posicion {found_ia.end()}")
-else:
-    print("No he encontrado el patrón en el texto")
+# if found_ia:
+#     print(f"He encontrado el patrón en el texto en la posicion {found_ia.start()} y termina en la posicion {found_ia.end()}")
+# else:
+#     print("No he encontrado el patrón en el texto")
 
 
-    ## Encontrar todas las coincidnecias de un patrón
-    # .findall() devuelve una lista con todas las coincidencias
+#     ## Encontrar todas las coincidnecias de un patrón
+#     # .findall() devuelve una lista con todas las coincidencias
 
-    text= "Me gusta Phthon. Python es lo máximo. Aunque Python no es tan dificil, ojo con Python"
-    pattern = "P.thon"
+#     text= "Me gusta Phthon. Python es lo máximo. Aunque Python no es tan dificil, ojo con Python"
+#     pattern = "P.thon"
 
-    matches = re.findall(pattern, text)
+#     matches = re.findall(pattern, text)
 
-    print(len(matches))
+#     print(len(matches))
    
-   #------------------
+#    #------------------
 
-   # iter() devulve un iterador que contine todos los resultados de la busqueda
+#    # iter() devulve un iterador que contine todos los resultados de la busqueda
    
-    text= "Me gusta Phthon. Python es lo máximo. Aunque Python no es tan dificil, ojo con Python"
-    pattern = "Py.hon"
+#     text= "Me gusta Phthon. Python es lo máximo. Aunque Python no es tan dificil, ojo con Python"
+#     pattern = "Py.hon"
 
-    matches = re.finditer(pattern, text)
+#     matches = re.finditer(pattern, text)
 
-    for match in matches:
-        print(match.group(), match.start(), match.end())
+#     for match in matches:
+#         print(match.group(), match.start(), match.end())
 
+
+from os import system
+if system("clear") != 0: system("cls")
 
 
 # EJERCICIO 02
@@ -90,3 +92,35 @@ matches = re.finditer(pattern, text)
 
 for match in matches:
     print(match.group(), match.start(), match.end())
+
+    ###Los modificadores son opcines que se pueden agregar a un patrón para cambiar su comportamiento
+
+    # re.IgnoreCase: Ignora las mayúsculas y minúsculas
+
+text = "Todo el mundo dice que la IA nos va a quitar el trabajo. Pero solo hace falta ver cómo la puede cagar con la Regex para ir con cuidado ia Ia iA"
+pattern = "IA"
+found = re.findall(pattern, text, re.IGNORECASE)
+
+if found: print(found)
+
+
+# EJERCICIO 03
+# Encuentra todas las ocurrencias de la palabra "python" en el siguiente texto, sin distinguir entre mayúsculas y minúsculas.
+text = "Este es el curso de Python de midudev. ¡Suscríbete a python si te gusta este contenido! PYTHON"
+
+pattern = "p.thon"
+found = re.findall(pattern, text, re.IGNORECASE)
+
+if found: print(found)
+
+
+### remplazar le texto
+
+# .sub() reemplazar todas las coincidencias de un patrón en un texto
+
+text = "hola mundo"
+pattern = "hola"
+replacement = "Adiós"
+
+new_text = re.sub(pattern, replacement, text)
+print(new_text)
