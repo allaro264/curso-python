@@ -63,3 +63,30 @@ else:
 
     print(len(matches))
    
+   #------------------
+
+   # iter() devulve un iterador que contine todos los resultados de la busqueda
+   
+    text= "Me gusta Phthon. Python es lo máximo. Aunque Python no es tan dificil, ojo con Python"
+    pattern = "Py.hon"
+
+    matches = re.finditer(pattern, text)
+
+    for match in matches:
+        print(match.group(), match.start(), match.end())
+
+
+
+# EJERCICIO 02
+# Encuentra todas las ocurrencias de la palabra "midu" en el siguiente texto e indica en que posición empieza y termina cada coincidencia y cuantas veces se encontró.
+text = "Este es el curso de Python de midudev. ¡Suscríbete a midudev si te gusta este contenido! midu"
+pattern = "midu"
+
+matches = re.findall(pattern, text)
+
+print(f"he encontrado la palabra midu: ", len(matches))
+
+matches = re.finditer(pattern, text)
+
+for match in matches:
+    print(match.group(), match.start(), match.end())
