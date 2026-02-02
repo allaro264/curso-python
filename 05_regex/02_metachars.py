@@ -77,8 +77,41 @@ matches = re.findall(pattern, text)
 print(matches)
 
 # ^: Coincide con el principio de una cadena
-text = "@423_name"
-valid = r"^\w" #validar nombre de usuario
+username = "423_name%22"
+pattern = r"^\w" #validar nombre de usuario
 
+valid = re.search(pattern, username)
+
+# numres de telefono
 if valid: print("El nombre de usuario es válido")
 else: print("El nombre de usuario no es válido")
+
+phone = "+34 6899999999"
+pattern = r"^\+\d{2,3} "
+
+valid = re.search(pattern, phone)
+
+if valid: print("El número de teléfono es válido")
+else: print("El número de teléfono no es válido")
+
+# $: Coincide con el final de un cadena
+text = r"mundo$"
+
+valid = re.search(pattern, text)
+
+if valid: print("La cadena es valida")
+else: print("La cadena no es válida")
+
+# Ejercicio
+# Valida que un correo se gmail
+text = "prueba@gmail.com"
+pattern = r"@gmail.com$"
+
+valid = re.search(pattern, text)
+
+if valid: print("el correo es válido")
+else: print("el correo no es válido")
+
+# Ejercicio:
+# Tenemos una lista de archivos, nevesitamos saber los nombres de los ficheros con extension .txt
+files = "file1.txt file2.pdf gif.webp secreto.txt"
