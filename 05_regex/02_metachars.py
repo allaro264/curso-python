@@ -115,3 +115,22 @@ else: print("el correo no es válido")
 # Ejercicio:
 # Tenemos una lista de archivos, nevesitamos saber los nombres de los ficheros con extension .txt
 files = "file1.txt file2.pdf gif.webp secreto.txt"
+
+pattern = r"\b.txt\b"
+
+valid = re.findall(pattern, files)
+print(valid)
+
+# \b: Coincide con el principio o final de una palabra
+text = "casa casado cansado casa"
+pattern = r"casa"
+
+found = re.findall(pattern, text)
+print(found)
+
+# or: Coincidir con una opción u otra
+fruits = "limon, manzana, naranja, kiwi, platano, aguacate"
+pattern = r"kiwi|platano|P..a|\b\w{7}\b"
+
+found = re.findall(pattern, fruits)
+print(found)
