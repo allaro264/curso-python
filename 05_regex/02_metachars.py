@@ -129,7 +129,7 @@ found = re.findall(pattern, text)
 print(found)
 
 # or: Coincidir con una opción u otra
-fruits = "limon, manzana, naranja, kiwi, platano, aguacate"
+fruits = "limon, manzana, naranja, kiwi, platano, aguacate, piña"
 pattern = r"kiwi|platano|P..a|\b\w{7}\b"
 
 found = re.findall(pattern, fruits)
