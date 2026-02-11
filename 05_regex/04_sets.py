@@ -38,15 +38,26 @@ print(matches)
 
 # Ejercicio final con todo lo aprendido
 # Mejorar esto: https://www.computerhope.com/jargon/r/regular-expression.png
+url= "https://www.computerhope.com/jargon/r/regular-expression.png"
+
+pattern = r"https?://[\w.-]+(?:\.[\w.-]+)+[/\w._%+-]*\.(?:jpg|jpeg|png|gif|bmp|svg)"
+matches = re.findall(pattern, url)
+print(matches)
+
 
 ## Buscar corner cases que no pasa y arreglarlo:
 email ="lo.que+sea@shopping.online"
-email2 = "michael@gov.co.uk"
 
-pattern = r"[^+.]"
+
+pattern = r"^[\w._%+-]+@[\w.-]+\.[a-zA-Z]{2,}$"
 matches = re.findall(pattern, email)
 print(matches)
 
+email2 = "michael@gov.co.uk"
+
+pattern = r"^[\w._%+-]+@[\w.-]+\.[a-zA-Z]{2,}$"
+matches = re.findall(pattern, email2)
+print(matches)
 
 # [^]: Coincide con cualquier caracter que no esté dentro de los caracteres
 text = "Hola mundo"
