@@ -17,7 +17,7 @@ print(matches)
 # +: Una a más veces
 text = "dddd aaa ccc bb"
 pattern = "a+"
-matches = re.findall(pattern. text)
+matches = re.findall(pattern, text)
 print(matches)
 
 #?: Cero o una vez
@@ -28,6 +28,9 @@ print(matches)
 
 #Ejercicio: Haz que aparezca un +34 en el siguiente ejercicio
 phone = "+34 6889999999"
+pattern = r"\+34\s\d{9}"
+matches = re.findall(pattern, phone)
+print(matches)
 
 
 # {n}: Exactamente n veces

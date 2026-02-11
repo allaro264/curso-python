@@ -31,14 +31,22 @@ print(matches)
 # Solo queremos las palabras man, fan y ban
 text = "omniman, fanatico, man bandana"
 # \b
+pattern = r"\b[mfb]an\b"
+matches = re.findall(pattern, text)
+print(matches)
 
 
 # Ejercicio final con todo lo aprendido
 # Mejorar esto: https://www.computerhope.com/jargon/r/regular-expression.png
 
 ## Buscar corner cases que no pasa y arreglarlo:
-"lo.que+sea@shopping.online"
-"michael@gov.co.uk"
+email ="lo.que+sea@shopping.online"
+email2 = "michael@gov.co.uk"
+
+pattern = r"[^+.]"
+matches = re.findall(pattern, email)
+print(matches)
+
 
 # [^]: Coincide con cualquier caracter que no esté dentro de los caracteres
 text = "Hola mundo"
