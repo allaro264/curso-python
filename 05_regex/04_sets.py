@@ -48,16 +48,16 @@ print(matches)
 ## Buscar corner cases que no pasa y arreglarlo:
 email ="lo.que+sea@shopping.online"
 
-
-pattern = r"^[\w._%+-]+@[\w.-]+\.[a-zA-Z]{2,}$"
-matches = re.findall(pattern, email)
-print(matches)
+local, domain = email.split("@", 1)
+local = local.split("+", 1)[0].replace(".", "")
+clean = f"{local}@{domain}"
+print(clean)
 
 email2 = "michael@gov.co.uk"
 
-pattern = r"^[\w._%+-]+@[\w.-]+\.[a-zA-Z]{2,}$"
-matches = re.findall(pattern, email2)
-print(matches)
+local, domain = email2.split("@", 1)
+domain = domain.replace(".", "", 1)
+print(f"{local}@{domain}")
 
 # [^]: Coincide con cualquier caracter que no esté dentro de los caracteres
 text = "Hola mundo"
