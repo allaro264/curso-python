@@ -1,4 +1,5 @@
 from bs4 import BeautifulSoup
+from urllib.parse import urljoin
 import requests
 
 url = 'https://www.apple.com/es/shop/buy-mac/macbook-air/'
@@ -12,24 +13,37 @@ if response.status_code == 200:
 
     soup = BeautifulSoup(response.text, 'html,parser')
 
-    # print(soup.prettify())
-    title_tag = soup.title
-    if title_tag:
-        print(f"El título de la web es: {title_tag.text}")
+    # Extraer todos los titulos
+titulos = [titulo.string for titulo in soup.find_all('h1')]
+print(titulos)
 
- # fint pirce using bs
-    # price_span = soup.find('span', class_='rc-prices-fullprice')
-    # if price_span:
-    #     print(f"El precio del producto es: {price_span.text}")
+    # Extraer todos los enlaces <a>
+enlaces = [urljoin(url, enlace.get('href')) for enlace in soup.find_all('a')]
+print(enlaces)
 
- # find all the prices
-    # prices_span = soup.find_all(class_='rc-prices_fullprece')
-    # for price in prices_span:
-    #     print(f"El precio del producto es: {price.text}")
+# extraer todo el contenido de la página de texto
+# all_text = soup.get_text()
+# print(all_text)
 
-    # find each product and get the name and the price
-    products = soup.find_all(class_='rc-proctselection-item')
-    for product in products:
-        name = product.find(class_="list-title").text
-        price = product.find(class_="rc-prices-fullprice").attrs
-        print(f"El producto:\n {name}\nPrecio de {price}\n\n")
+# extraer el texto del elemento main
+# main_text = soup.find('main').get_text()
+# print(main_text)
+
+# extraer de la id mw-content-text
+# content_text = soup.find('div', {'id:': 'mw-content-text'}).get_text()
+# print(content_text)
+
+# extrerel opne graph si existe
+# og_image = soup.find('meta', {'property': 'og:image'})
+# if og_image:
+#     print(og_image['content'])
+# else:
+#     print('No se encontró la imagen')
+
+og_image = soup.find('meta', property='og:image')
+if og_image:
+    print(og_image['content'])
+else:
+    print('No se encontró la imagen')
+
+scrape_url('https://midu.dev') # pyright: ignore[reportUndefinedVariable]
